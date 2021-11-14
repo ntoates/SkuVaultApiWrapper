@@ -22,7 +22,6 @@ namespace SkuVaultApiWrapper.RequestMethods
 			{
 				if(skuVaultAccount.IsMissingTokens)
 				{
-					// TODO: BETTER EXCEPTIONS
 					throw new Exception("NO TOKENS FOUND THIS SHOULD NOT BE POSSIBLE");
 				}
 				request.TenantToken = skuVaultAccount.TenantToken;
@@ -36,7 +35,7 @@ namespace SkuVaultApiWrapper.RequestMethods
 				.HandleResult<HttpResponseMessage>(r => r.StatusCode == (HttpStatusCode)429)
 				.WaitAndRetryAsync(NumberOfRetrys, i => pauseBetweenFailures, (result, timeSpan, retryCount, context) =>
 				{
-					// TODO: Inject ILogger maybe?
+					// TODO: Remove: Debugigng purposes only
 					Console.WriteLine($"Request failed with {result.Result.StatusCode}. Waiting {timeSpan} before next retry. Retry attempt {retryCount} of {NumberOfRetrys}.");
 				})
 				.ExecuteAsync(async  () => {

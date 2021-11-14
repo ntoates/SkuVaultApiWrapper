@@ -97,7 +97,7 @@ namespace SkuVaultApiWrapper
 			HttpClient httpClient = new HttpClient();
 			httpClient.DefaultRequestHeaders.Accept.Clear();
 			httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-			httpClient.BaseAddress = new Uri("https://app.skuvault.com/");
+			httpClient.BaseAddress = new Uri("https://app.skuvault.com/"); // TODO: Allow setting of different envrionments?
 			return httpClient;
 		}
 	}
