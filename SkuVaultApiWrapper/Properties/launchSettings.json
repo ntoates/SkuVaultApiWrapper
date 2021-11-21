@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "SkuVaultApiWrapper": {
+      "commandName": "Project",
+      "environmentVariables": {
+      }
+    }
+  }
+}

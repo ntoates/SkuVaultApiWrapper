@@ -7,7 +7,6 @@
         public string UserEmail { get; set; }
         public string UserPassword { get; set; }
         internal bool TokensAreValid => !string.IsNullOrWhiteSpace(TenantToken) && !string.IsNullOrWhiteSpace(UserToken);
-        internal bool CredentialsAreValid => !string.IsNullOrWhiteSpace(TenantToken) && !string.IsNullOrWhiteSpace(UserToken);
-
+        internal bool CredentialsAreValid => !string.IsNullOrWhiteSpace(UserEmail) && !string.IsNullOrWhiteSpace(UserPassword);
     }
 }

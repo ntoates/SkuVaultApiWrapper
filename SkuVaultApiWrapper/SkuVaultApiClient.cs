@@ -54,8 +54,12 @@ namespace SkuVaultApiWrapper
                 GetTokensResponse getTokensResponse = this.GetTokens(config.Value.UserEmail, config.Value.UserPassword).GetAwaiter().GetResult();
                 if (getTokensResponse.ResponseStatusCode == System.Net.HttpStatusCode.OK)
                 {
+                    _apiClientConfig = new SkuVaultApiClientConfig();
                     _apiClientConfig.TenantToken = getTokensResponse.TenantToken;
                     _apiClientConfig.UserToken = getTokensResponse.UserToken;
+                    _apiClientConfig.UserEmail = config.Value.UserEmail;
+                    _apiClientConfig.UserPassword = config.Value.UserPassword;
+
                 }
                 else
                 {

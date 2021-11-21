@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30907.101
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkuVaultApiWrapper", "SkuVaultApiWrapper\SkuVaultApiWrapper.csproj", "{F3D88ECF-1122-459D-B570-81C6B905E8F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SkuVaultApiWrapper", "SkuVaultApiWrapper\SkuVaultApiWrapper.csproj", "{F3D88ECF-1122-459D-B570-81C6B905E8F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkuVaultApiWrapperTest", "SkuVaultApiWrapperTest\SkuVaultApiWrapperTest.csproj", "{B97BF078-9832-4183-9073-73C27103BDAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SkuVaultApiWrapperTest", "SkuVaultApiWrapperTest\SkuVaultApiWrapperTest.csproj", "{B97BF078-9832-4183-9073-73C27103BDAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleConsoleApp", "ExampleConsoleApp\ExampleConsoleApp.csproj", "{F1999BBF-AD4C-469A-B418-CD70FBB2D8DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{B97BF078-9832-4183-9073-73C27103BDAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B97BF078-9832-4183-9073-73C27103BDAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B97BF078-9832-4183-9073-73C27103BDAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1999BBF-AD4C-469A-B418-CD70FBB2D8DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1999BBF-AD4C-469A-B418-CD70FBB2D8DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1999BBF-AD4C-469A-B418-CD70FBB2D8DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1999BBF-AD4C-469A-B418-CD70FBB2D8DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

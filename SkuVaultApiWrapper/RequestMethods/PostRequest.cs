@@ -43,6 +43,7 @@ namespace SkuVaultApiWrapper.RequestMethods
             var decodedResponseContent = JsonConvert.DeserializeObject<T>(responseContent);
             decodedResponseContent.ResponseStatusCode = response.StatusCode;
             decodedResponseContent.ResponseReasonPhrase = response.ReasonPhrase;
+
             return decodedResponseContent;
         }
     }
