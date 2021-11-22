@@ -17,22 +17,8 @@ namespace SkuVaultApiWrapper
 		internal SkuVaultApiClientConfig _apiClientConfig;
 
 		/// <summary>
-		/// Instantiates an instance of the SkuVaultApiClient.
+		/// Constructor for use with injection (View ExampleConsoleApp to see pattern in use)
 		/// </summary>
-		/// <param name="httpClient"></param>
-		/// <example>
-		/// // Pulls configuration from appsettings or environment variables. Could also just manually add config here.
-		/// services.Configure<SkuVaultApiClientConfig>(_configuration.GetSection(nameof(SkuVaultApiClientConfig)));
-		/// 
-		/// services.AddHttpClient<ITypedClient, TypedClient>().ConfigureHttpClient((serviceProvider, httpClient) =>
-		///	{
-		///		var clientConfig = serviceProvider.GetRequiredService<ITypedClientConfig>();
-		///		httpClient.BaseAddress = clientConfig.BaseUrl;
-		///		httpClient.Timeout = TimeSpan.FromSeconds(clientConfig.Timeout);
-		///		httpClient.DefaultRequestHeaders.Add("User-Agent", "BlahAgent");
-		/// 	httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
-		/// });
-		/// </example>
 		public SkuVaultApiClient(HttpClient httpClient, IOptions<SkuVaultApiClientConfig> config)
 		{
 			if (httpClient == null)
@@ -40,42 +26,49 @@ namespace SkuVaultApiWrapper
 				throw new ArgumentException("HttpClient can not be null.");
 			}
 
-			_httpClient = httpClient;
-			_httpClient.BaseAddress = new Uri("https://app.skuvault.com/");
-			_httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
 			if (!config.Value.TokensAreValid && !config.Value.CredentialsAreValid)
 			{
 				throw new ArgumentException("Either Tokens or Credentials must not be null or empty.");
 			}
 
-			if (!config.Value.TokensAreValid && config.Value.CredentialsAreValid)
-			{
-				GetTokensResponse getTokensResponse = this.GetTokens(config.Value.UserEmail, config.Value.UserPassword).GetAwaiter().GetResult();
-				if (getTokensResponse.ResponseStatusCode == System.Net.HttpStatusCode.OK)
-				{
-					_apiClientConfig = new SkuVaultApiClientConfig();
-					_apiClientConfig.TenantToken = getTokensResponse.TenantToken;
-					_apiClientConfig.UserToken = getTokensResponse.UserToken;
-					_apiClientConfig.UserEmail = config.Value.UserEmail;
-					_apiClientConfig.UserPassword = config.Value.UserPassword;
+			_httpClient = httpClient;
+			_httpClient.BaseAddress = new Uri("https://app.skuvault.com/");
+			_httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-				}
-				else
-				{
-					throw new UnableToGetTokensException("Unable to get Tokens from User Credentials.");
-				}
+			if (config.Value.TokensAreValid || !config.Value.CredentialsAreValid)
+			{
+				_apiClientConfig = config.Value;
+				return;
+			}
+
+			// Attempt to get tokens from user credentials if provided
+			GetTokensResponse getTokensResponse = this.GetTokens(config.Value.UserEmail, config.Value.UserPassword).GetAwaiter().GetResult();
+			if ( TokensResponseWasValid(getTokensResponse))
+			{
+				_apiClientConfig = new SkuVaultApiClientConfig
+				(
+					getTokensResponse.TenantToken,
+					getTokensResponse.UserToken,
+					config.Value.UserEmail,
+					config.Value.UserPassword
+				);
 			}
 			else
 			{
-				_apiClientConfig = config.Value;
+				throw new UnableToGetTokensException("Unable to get Tokens from User Credentials.");
 			}
+
+		}
+
+		private bool TokensResponseWasValid(GetTokensResponse getTokensResponse)
+		{
+			return getTokensResponse.ResponseStatusCode == System.Net.HttpStatusCode.OK && 
+				getTokensResponse.TenantToken != null && 
+				getTokensResponse.UserToken != null;
 		}
 
 		private async Task<GetTokensResponse> GetTokens(string userEmail, string userPassword)
 		{
-			// Get Skuvault HttpClient
-
 			// Attempt to get tokens from /getTokens Endpoint
 			var getTokensRequest = new GetTokensRequest
 			{
