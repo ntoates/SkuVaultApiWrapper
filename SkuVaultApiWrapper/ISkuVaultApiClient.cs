@@ -1,6 +1,6 @@
 ﻿namespace SkuVaultApiWrapper
 {
-    public interface ISkuVaultApiClient
+	public interface ISkuVaultApiClient
 	{
 	}
 }
