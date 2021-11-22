@@ -15,18 +15,15 @@ namespace ExampleConsoleApp
 
     public class ClassThatDoesStuff : IClassThatDoesStuff
     {
-        private readonly HttpClient _httpClient = null!;
-        private readonly IOptions<SkuVaultApiClientConfig> _clientConfig = null!;
+        private readonly SkuVaultApiClient _skuVaultApiClient;
 
-        public ClassThatDoesStuff(HttpClient httpClient, IOptions<SkuVaultApiClientConfig> clientConfig)
+        public ClassThatDoesStuff(ISkuVaultApiClient skuvaultApiClient)
         {
-            _httpClient = httpClient;
-            _clientConfig = clientConfig;
+            _skuVaultApiClient = (SkuVaultApiClient) skuvaultApiClient;
         }
 
         public void Run()
         {
-            var client = new SkuVaultApiClient(_httpClient, _clientConfig);
             Console.WriteLine("Successfully got tokens for your user!");
         }
     }
