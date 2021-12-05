@@ -1,7 +1,6 @@
 ﻿namespace SkuVaultApiWrapper.Models.SkuVaultModels
 {
-	public class GetWarehouseRequest : BaseRequestModel
+	public class GetWarehouseRequest : BasePagedRequestModel
 	{
-		public int PageNumber { get; set; }
 	}
 }
