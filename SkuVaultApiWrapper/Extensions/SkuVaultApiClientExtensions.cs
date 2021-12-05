@@ -1,5 +1,6 @@
 ﻿using SkuVaultApiWrapper.Models.GetBrands;
 using SkuVaultApiWrapper.Models.GetIntegrations;
+using SkuVaultApiWrapper.Models.GetLocations;
 using SkuVaultApiWrapper.Models.Shared;
 using SkuVaultApiWrapper.Models.SkuVaultModels;
 using SkuVaultApiWrapper.RequestMethods;
@@ -32,6 +33,11 @@ namespace SkuVaultApiWrapper.Extensions
 		public static async Task<GetBrandsResponse> GetBrands(this SkuVaultApiClient apiClient, GetBrandsRequest request)
 		{
 			return await PostRequest.PostAsync<GetBrandsResponse>(apiClient, request, SkuVaultEndpoints.getBrands);
+		}
+
+		public static async Task<GetLocationsResponse> GetLocations(this SkuVaultApiClient apiClient, GetLocationsRequest request)
+		{
+			return await PostRequest.PostAsync<GetLocationsResponse>(apiClient, request, SkuVaultEndpoints.getLocations);
 		}
 	}
 }
