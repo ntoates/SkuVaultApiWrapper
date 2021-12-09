@@ -3,6 +3,7 @@ using SkuVaultApiWrapper.Models.GetIntegrations;
 using SkuVaultApiWrapper.Models.GetKits;
 using SkuVaultApiWrapper.Models.GetLocations;
 using SkuVaultApiWrapper.Models.GetProduct;
+using SkuVaultApiWrapper.Models.GetProducts;
 using SkuVaultApiWrapper.Models.Shared;
 using SkuVaultApiWrapper.Models.SkuVaultModels;
 using SkuVaultApiWrapper.RequestMethods;
@@ -50,6 +51,11 @@ namespace SkuVaultApiWrapper.Extensions
 		public static async Task<GetProductResponse> GetProduct(this SkuVaultApiClient apiClient, GetProductRequest request)
 		{
 			return await PostRequest.PostAsync<GetProductResponse>(apiClient, request, SkuVaultEndpoints.getProduct);
+		}
+
+		public static async Task<GetProductsResponse> GetProducts(this SkuVaultApiClient apiClient, GetProductsRequest request)
+		{
+			return await PostRequest.PostAsync<GetProductsResponse>(apiClient, request, SkuVaultEndpoints.getProducts);
 		}
 	}
 }

@@ -5,6 +5,7 @@ using SkuVaultApiWrapper.Models.GetIntegrations;
 using SkuVaultApiWrapper.Models.GetKits;
 using SkuVaultApiWrapper.Models.GetLocations;
 using SkuVaultApiWrapper.Models.GetProduct;
+using SkuVaultApiWrapper.Models.GetProducts;
 using SkuVaultApiWrapper.Models.SkuVaultModels;
 
 namespace ExampleConsoleApp
@@ -27,7 +28,8 @@ namespace ExampleConsoleApp
 			//var brandsReponse = _skuVaultApiClient.GetBrands(new GetBrandsRequest()).GetAwaiter().GetResult();
 			//var locationsResponse = _skuVaultApiClient.GetLocations(new GetLocationsRequest()).GetAwaiter().GetResult();
 			var kitsResponse = _skuVaultApiClient.GetKits(new GetKitsRequest()).GetAwaiter().GetResult();
-			var productResponse = _skuVaultApiClient.GetProduct(new GetProductRequest { ProductSKU = new List<string> { "C0005" } }).GetAwaiter().GetResult();
+			var productResponse = _skuVaultApiClient.GetProduct(new GetProductRequest { ProductSKU = new List<string> { "C0009" } }).GetAwaiter().GetResult();
+			var productsResponse = _skuVaultApiClient.GetProducts(new GetProductsRequest { ProductSkus = new List<string> { "C0009" } }).GetAwaiter().GetResult();
 
 
 
@@ -41,7 +43,8 @@ namespace ExampleConsoleApp
 			//Console.WriteLine("Brand from your account: " + brandsReponse.Brands.FirstOrDefault()?.Name);
 			//Console.WriteLine("Warehouse-Location from your account: " + locationsResponse.Items.FirstOrDefault()?.WarehouseCode + "-" + locationsResponse.Items.FirstOrDefault()?.LocationCode);
 			Console.WriteLine("Kit from your account: SKU = " + kitsResponse.Kits.FirstOrDefault()?.SKU );
-			Console.WriteLine("Product Description and QuantityAvailable from your product:" + productResponse?.ProductDetails?.Description + "-" + productResponse?.ProductDetails?.QuantityAvailable);
+			Console.WriteLine("Product Description and QuantityAvailable from your product from /getProduct: " + productResponse?.ProductDetails?.Description + "-" + productResponse?.ProductDetails?.QuantityAvailable);
+			Console.WriteLine("Product Description and QuantityAvailable from your product from /getProducts: " + productsResponse?.Products?.FirstOrDefault()?.Description + "-" + productsResponse?.Products?.FirstOrDefault()?.QuantityAvailable);
 
 
 		}
