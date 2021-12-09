@@ -1,4 +1,5 @@
-﻿using SkuVaultApiWrapper.Models.GetBrands;
+﻿using SkuVaultApiWrapper.Models.GetAvailableQuantities;
+using SkuVaultApiWrapper.Models.GetBrands;
 using SkuVaultApiWrapper.Models.GetIntegrations;
 using SkuVaultApiWrapper.Models.GetKits;
 using SkuVaultApiWrapper.Models.GetLocations;
@@ -62,6 +63,11 @@ namespace SkuVaultApiWrapper.Extensions
 		public static async Task<GetPurchaseOrdersResponse> GetPurchaseOrders(this SkuVaultApiClient apiClient, GetPurchaseOrdersRequest request)
 		{
 			return await PostRequest.PostAsync<GetPurchaseOrdersResponse>(apiClient, request, SkuVaultEndpoints.getPOs);
+		}
+
+		public static async Task<GetAvailableQuantitiesResponse> GetAvailableQuantities(this SkuVaultApiClient apiClient, GetAvailableQuantitiesRequest request)
+		{
+			return await PostRequest.PostAsync<GetAvailableQuantitiesResponse>(apiClient, request, SkuVaultEndpoints.getAvailableQuantities);
 		}
 	}
 }
