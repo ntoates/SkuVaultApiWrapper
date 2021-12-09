@@ -7,7 +7,7 @@ namespace SkuVaultApiWrapper.Models.SharedModels
 	public class KitLine
 	{
 		public int Combine { get; set; }
-		public List<Item> Items { get; set; }
+		public List<KitItem> Items { get; set; }
 		public string LineName { get; set; }
 		public int Quantity { get; set; }
 	}

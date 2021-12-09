@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SkuVaultApiWrapper.Models.SharedModels
 {
-	public class Item
+	public class KitItem
 	{
 		public string Code { get; set; }
 		public string Description { get; set; }

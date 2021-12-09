@@ -6,6 +6,7 @@ using SkuVaultApiWrapper.Models.GetKits;
 using SkuVaultApiWrapper.Models.GetLocations;
 using SkuVaultApiWrapper.Models.GetProduct;
 using SkuVaultApiWrapper.Models.GetProducts;
+using SkuVaultApiWrapper.Models.GetPurchaseOrders;
 using SkuVaultApiWrapper.Models.SkuVaultModels;
 
 namespace ExampleConsoleApp
@@ -30,8 +31,7 @@ namespace ExampleConsoleApp
 			var kitsResponse = _skuVaultApiClient.GetKits(new GetKitsRequest()).GetAwaiter().GetResult();
 			var productResponse = _skuVaultApiClient.GetProduct(new GetProductRequest { ProductSKU = new List<string> { "C0009" } }).GetAwaiter().GetResult();
 			var productsResponse = _skuVaultApiClient.GetProducts(new GetProductsRequest { ProductSkus = new List<string> { "C0009" } }).GetAwaiter().GetResult();
-
-
+			var purchaseOrderResponse = _skuVaultApiClient.GetPurchaseOrders(new GetPurchaseOrdersRequest {  }).GetAwaiter().GetResult();
 
 			Console.WriteLine("Injection is neat!");
 			Console.WriteLine("");
@@ -45,6 +45,7 @@ namespace ExampleConsoleApp
 			Console.WriteLine("Kit from your account: SKU = " + kitsResponse.Kits.FirstOrDefault()?.SKU );
 			Console.WriteLine("Product Description and QuantityAvailable from your product from /getProduct: " + productResponse?.ProductDetails?.Description + "-" + productResponse?.ProductDetails?.QuantityAvailable);
 			Console.WriteLine("Product Description and QuantityAvailable from your product from /getProducts: " + productsResponse?.Products?.FirstOrDefault()?.Description + "-" + productsResponse?.Products?.FirstOrDefault()?.QuantityAvailable);
+			Console.WriteLine("Purchase Order ID from your account:" + purchaseOrderResponse?.PurchaseOrders?.FirstOrDefault()?.PoId);
 
 
 		}
