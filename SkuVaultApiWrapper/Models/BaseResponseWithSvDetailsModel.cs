@@ -6,7 +6,7 @@ namespace SkuVaultApiWrapper.Models
 {
 	public class BaseResponseWithSvDetailsModel : BaseResponseModel
 	{
-		public string SkuVaultResponseStatus { get; set; }
-		public List<string> SkuVaultErrors { get; set; }
+		public string Status { get; set; } = "Unknown";
+		public List<string> Errors { get; set; }
 	}
 }
