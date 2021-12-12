@@ -7,6 +7,6 @@ namespace SkuVaultApiWrapper.Models.GetProduct
 {
 	public class GetProductResponse : BaseResponseModel
 	{
-		public ProductDetails ProductDetails { get; set; }
+		public ProductDetails Product { get; set; }
 	}
 }

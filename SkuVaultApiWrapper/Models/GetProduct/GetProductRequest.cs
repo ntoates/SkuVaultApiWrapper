@@ -6,7 +6,7 @@ namespace SkuVaultApiWrapper.Models.GetProduct
 {
 	public class GetProductRequest : BaseRequestModel
 	{
-		public List<string> ProductCode { get; set; }
-		public List<string> ProductSKU { get; set; }
+		public string ProductCode { get; set; }
+		public string ProductSKU { get; set; }
 	}
 }
