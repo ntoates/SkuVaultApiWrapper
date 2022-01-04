@@ -9,10 +9,6 @@
 		internal bool TokensAreValid => !string.IsNullOrWhiteSpace(TenantToken) && !string.IsNullOrWhiteSpace(UserToken);
 		internal bool CredentialsAreValid => !string.IsNullOrWhiteSpace(UserEmail) && !string.IsNullOrWhiteSpace(UserPassword);
 
-		public SkuVaultApiClientConfig()
-		{
-		}
-
 		public SkuVaultApiClientConfig(string tenantToken, string userToken, string userEmail, string userPassword)
 		{
 			TenantToken = tenantToken;

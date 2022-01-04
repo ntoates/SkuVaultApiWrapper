@@ -16,10 +16,9 @@ namespace SkuVaultApiWrapper.RequestMethods
 
 		internal static async Task<T> PostAsync<T>(SkuVaultApiClient apiClient, BaseRequestModel request, string endpoint) where T : BaseResponseModel
 		{
+			// Add tokens to request body. Required for all SkuVault API endpoints.
 			request.TenantToken = apiClient._apiClientConfig.TenantToken;
 			request.UserToken = apiClient._apiClientConfig.UserToken;
-
-
 			string serializedRequestBody = JsonConvert.SerializeObject(request);
 
 			// Use Polly to retry the call if throttled
@@ -41,6 +40,7 @@ namespace SkuVaultApiWrapper.RequestMethods
 			// Setup and Return Response Content
 			var responseContent = await response.Content.ReadAsStringAsync();
 			var decodedResponseContent = JsonConvert.DeserializeObject<T>(responseContent);
+
 			decodedResponseContent.ResponseStatusCode = response.StatusCode;
 			decodedResponseContent.ResponseReasonPhrase = response.ReasonPhrase;
 
