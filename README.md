@@ -1,4 +1,4 @@
-# SkuVaultApiWrapper
+# SkuVaultApiWrapper - WORK IN PROGRESS
 Intended to be a minimalistic wrapper for SkuVaults API.
 
 **Included:**
