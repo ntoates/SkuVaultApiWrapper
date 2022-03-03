@@ -2,8 +2,8 @@
 {
 	public class BaseRequestModel
 	{
-		internal string TenantToken { get; set; }
-		internal string UserToken { get; set; }
+		public string TenantToken { get; set; }
+		public string UserToken { get; set; }
 		internal bool IsMissingTokens => string.IsNullOrWhiteSpace(TenantToken) || string.IsNullOrWhiteSpace(UserToken);
 	}
 }

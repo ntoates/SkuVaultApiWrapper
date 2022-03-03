@@ -2,21 +2,10 @@
 using Microsoft.Extensions.DependencyInjection;
 using SkuVaultApiWrapper;
 using SkuVaultApiWrapper.Models;
+using SkuVaultApiWrapper.Extensions;
 
 namespace ExampleConsoleApp
 {
-	/// <summary>
-	/// You will need to add a User Secrets file containing user credentials for this to run successfully.
-	/// </summary>
-	/// <example> 
-	/// Example secrets.json
-	/// {
-	///		"skuvaultapiclientconfig": {
-	///			"useremail": "YourUserName",
-	///			"userpassword": "YourUserPass"
-	///		}
-	/// } 
-	/// </example>
 	public class Program
 	{
 		public static void Main(string[] args)
@@ -26,21 +15,13 @@ namespace ExampleConsoleApp
 				.AddUserSecrets<UserDefineConfiguration>()
 				.Build();
 
-			// Inject IHttpClientFactory client into SkuVaultApiClient
+			// Add Configuration and Services for this library
 			IServiceCollection services = new ServiceCollection();
-			services.AddHttpClient<ISkuVaultApiClient, SkuVaultApiClient>(client =>
-			{
-				client.BaseAddress = new Uri("https://testing.com");
-				// Can configure http client here as needed
-			});
+			services.AddSkuVaultApiWrapper(builder.GetSection("SkuVaultApiClientConfig"));
 
-			// Configure SkuVaultApiClientConfig so it is available for reference
-			services.Configure<SkuVaultApiClientConfig>(builder.GetSection("SkuVaultApiClientConfig"));
-
-			// Inject whatever class is doing stuff
+			// Inject whatever class is doing stuff and run a basic method
 			services.AddTransient<IClassThatDoesStuff, ClassThatDoesStuff>();
 
-			// Get Builder and Run
 			IServiceProvider provider = services.BuildServiceProvider();
 			var exampleClass = provider.GetService<IClassThatDoesStuff>();
 			exampleClass?.Run();

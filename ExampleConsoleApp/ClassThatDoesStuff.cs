@@ -16,24 +16,24 @@ namespace ExampleConsoleApp
 	{
 		private readonly SkuVaultApiClient _skuVaultApiClient;
 
-		public ClassThatDoesStuff(ISkuVaultApiClient skuvaultApiClient)
+		public ClassThatDoesStuff(SkuVaultApiClient skuvaultApiClient)
 		{
-			_skuVaultApiClient = (SkuVaultApiClient)skuvaultApiClient;
+			_skuVaultApiClient = skuvaultApiClient;
 		}
 
 		public void Run()
 		{
-			//var warehouseResponse = _skuVaultApiClient.GetWarehouses(new GetWarehouseRequest()).GetAwaiter().GetResult();
+			var warehouseResponse = _skuVaultApiClient.GetWarehouses(new GetWarehouseRequest()).GetAwaiter().GetResult();
 			//var externalWarehouseResponse = _skuVaultApiClient.GetExternalWarehouses(new GetExternalWarehousesRequest()).GetAwaiter().GetResult();
 			//var integrationsResponse = _skuVaultApiClient.GetIntegrations(new GetIntegrationsRequest()).GetAwaiter().GetResult();
 			//var classificaitonResponse = _skuVaultApiClient.GetClassifications(new GetClassificationsRequest()).GetAwaiter().GetResult();
 			//var brandsReponse = _skuVaultApiClient.GetBrands(new GetBrandsRequest()).GetAwaiter().GetResult();
 			//var locationsResponse = _skuVaultApiClient.GetLocations(new GetLocationsRequest()).GetAwaiter().GetResult();
 			//var kitsResponse = _skuVaultApiClient.GetKits(new GetKitsRequest()).GetAwaiter().GetResult();
-			var productResponse = _skuVaultApiClient.GetProduct(new GetProductRequest { ProductSKU = "C0009" }).GetAwaiter().GetResult();
+			var productResponse = _skuVaultApiClient.GetProduct(new GetProductRequest { ProductSKU = "testsku1001" }).GetAwaiter().GetResult();
 			//var productsResponse = _skuVaultApiClient.GetProducts(new GetProductsRequest { ProductSkus = new List<string> { "C0009" } }).GetAwaiter().GetResult();
 			//var purchaseOrderResponse = _skuVaultApiClient.GetPurchaseOrders(new GetPurchaseOrdersRequest { }).GetAwaiter().GetResult();
-			var availableQuantitiesResponse = _skuVaultApiClient.GetAvailableQuantities(new GetAvailableQuantitiesRequest { }).GetAwaiter().GetResult();
+			//var availableQuantitiesResponse = _skuVaultApiClient.GetAvailableQuantities(new GetAvailableQuantitiesRequest { }).GetAwaiter().GetResult();
 
 
 			Console.WriteLine("Injection is neat!");
@@ -49,7 +49,7 @@ namespace ExampleConsoleApp
 			Console.WriteLine("Product Description and QuantityAvailable from your product from /getProduct: " + productResponse?.Product?.Description + "-" + productResponse?.Product?.QuantityAvailable);
 			//Console.WriteLine("Product Description and QuantityAvailable from your product from /getProducts: " + productsResponse?.Products?.FirstOrDefault()?.Description + "-" + productsResponse?.Products?.FirstOrDefault()?.QuantityAvailable);
 			//Console.WriteLine("Purchase Order ID from your account:" + purchaseOrderResponse?.PurchaseOrders?.FirstOrDefault()?.PoId);
-			Console.WriteLine("Sku and AvailableQuantity from your account:" + availableQuantitiesResponse?.Items?.FirstOrDefault()?.Sku + "-" + availableQuantitiesResponse?.Items?.FirstOrDefault()?.AvailableQuantity);
+			//Console.WriteLine("Sku and AvailableQuantity from your account:" + availableQuantitiesResponse?.Items?.FirstOrDefault()?.Sku + "-" + availableQuantitiesResponse?.Items?.FirstOrDefault()?.AvailableQuantity);
 		}
 	}
 }

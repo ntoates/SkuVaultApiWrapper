@@ -5,29 +5,27 @@ using System;
 
 namespace SkuVaultApiWrapper.Extensions
 {
-
+	/// <summary>
+	/// Good articles for this pattern can be found here: 
+	/// https://dotnetcoretutorials.com/2017/01/24/servicecollection-extension-pattern/
+	/// https://tim-maes.com/2019/10/21/net-core-tutorial-using-the-servicecollection-extension-pattern/
+	/// </summary>
 	public static class ServiceCollectionExtensions
 	{
-		public static IServiceCollection AddSkuVaultApiWrapper(this IServiceCollection services, IConfigurationRoot configuration, string moduleName)
+		/// <summary>
+		/// Adds the Configuration, HttpClientFactory, and Service for the SkuVault API Client.
+		/// </summary>
+		/// <param name="services">The service collection we are extending.</param>
+		/// <param name="skuVaultApiClientConfigurationSection">The Configuration section</param>
+		public static void AddSkuVaultApiWrapper(this IServiceCollection services, IConfiguration skuVaultApiClientConfigurationSection)
 		{
-			// TODO: Implement this
-			//services.AddTransient<SkuVaultApiClient>();
-			//var skuVaultApiWrapperConfig = (SkuVaultApiClientConfig)configuration.GetSection(nameof(SkuVaultApiClientConfig));
-			//if (skuVaultApiWrapperConfig == null)
-			//{
-			//	throw new ArgumentException("SkuVaultApiClientConfig section is required when using the IServiceCollection extension to inject SkuVaultApiClient.");
-			//}
+			services.Configure<SkuVaultApiClientConfig>(skuVaultApiClientConfigurationSection);
+			services.AddHttpClient<ISkuVaultApiClient, SkuVaultApiClient>(client =>
+			{
+				client.BaseAddress = new Uri("https://app.skuvault.com/");
+			});
 
-			//services.Configure<SkuVaultApiClientConfig>(configuration.GetSection("SkuVaultApiClientConfig"));
-
-			//services.ConfigureOptions<SkuVaultApiClientConfig>();
-			//services.AddOptions<SkuVaultApiClientConfig>();
-			//services.AddHttpClient<ISkuVaultApiClient, SkuVaultApiClient>(client =>
-			//{
-			//	client.BaseAddress = new Uri("https://testing.com");
-			//	// Can configure http client here as needed
-			//});
-			return services;
+			services.AddTransient<SkuVaultApiClient>();
 		}
 	}
 }

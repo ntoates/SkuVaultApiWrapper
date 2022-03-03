@@ -21,21 +21,7 @@ namespace SkuVaultApiWrapper.RequestMethods
 			request.UserToken = apiClient._apiClientConfig.UserToken;
 			string serializedRequestBody = JsonConvert.SerializeObject(request);
 
-			// Use Polly to retry the call if throttled
-			var response = await Policy
-				.HandleResult<HttpResponseMessage>(r => r.StatusCode == (HttpStatusCode)429)
-				.WaitAndRetryAsync(NumberOfRetrys, i => pauseBetweenFailures, (result, timeSpan, retryCount, context) =>
-				{
-					// TODO: Remove: Debugigng purposes only
-					Console.WriteLine($"Request failed with {result.Result.StatusCode}. Waiting {timeSpan} before next retry. Retry attempt {retryCount} of {NumberOfRetrys}.");
-				})
-				.ExecuteAsync(async () =>
-				{
-					// TODO: This should be a helper function that also set the pauseBetweenFailures to be whatever time SkuVault returns
-					var responseMessage = await apiClient._httpClient.PostAsync(endpoint, new StringContent(serializedRequestBody, Encoding.UTF8, "application/json"));
-					return responseMessage;
-				}
-			);
+			var response = await apiClient._httpClient.PostAsync(endpoint, new StringContent(serializedRequestBody, Encoding.UTF8, "application/json"));
 
 			// Setup and Return Response Content
 			var responseContent = await response.Content.ReadAsStringAsync();
