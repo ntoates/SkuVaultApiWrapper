@@ -1,8 +1,5 @@
 ﻿using Newtonsoft.Json;
-using Polly;
 using SkuVaultApiWrapper.Models;
-using System;
-using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,9 +8,6 @@ namespace SkuVaultApiWrapper.RequestMethods
 {
 	internal class PostRequest
 	{
-		internal static readonly int NumberOfRetrys = 2;
-		internal static readonly TimeSpan pauseBetweenFailures = TimeSpan.FromSeconds(60);
-
 		internal static async Task<T> PostAsync<T>(SkuVaultApiClient apiClient, BaseRequestModel request, string endpoint) where T : BaseResponseModel
 		{
 			// Add tokens to request body. Required for all SkuVault API endpoints.
