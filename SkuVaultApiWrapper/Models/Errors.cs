@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SkuVaultApiWrapper
+namespace SkuVaultApiWrapper.Models
 {
 	internal class Errors
 	{
 		private List<string> ListOfErrors { get; set; }
 		internal bool ErrorsExist => ListOfErrors.Count > 0;
-		internal int ErrorsCount => ListOfErrors.Count;
+		internal int ErrorCount => ListOfErrors.Count;
 
 		internal Errors()
 		{
@@ -22,18 +22,13 @@ namespace SkuVaultApiWrapper
 
 		internal string GenerateErrorString()
 		{
-			if(ErrorsExist)
+			string FullErrorMessage = "";
+			for (int i = 0; i < ErrorCount; i++)
 			{
-				string FullErrorMessage = "";
-				for(int i = 0; i < ErrorsCount; i++)
-				{
-					var stringToInsert = i < ErrorsCount ? ListOfErrors[i] + "; " : ListOfErrors[i];
-					FullErrorMessage.Insert(FullErrorMessage.Length, stringToInsert);
-				}
-				return FullErrorMessage;
+				var stringToInsert = i < ErrorCount ? ListOfErrors[i] + "; " : ListOfErrors[i];
+				FullErrorMessage.Insert(FullErrorMessage.Length, stringToInsert);
 			}
-
-			return null;
+			return FullErrorMessage;
 		}
 	}
 }

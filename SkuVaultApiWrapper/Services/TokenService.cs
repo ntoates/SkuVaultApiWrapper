@@ -1,20 +1,18 @@
 ﻿using Newtonsoft.Json;
 using SkuVaultApiWrapper.Models.Shared;
 using SkuVaultApiWrapper.Models.SkuVaultModels;
-using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SkuVaultApiWrapper
+namespace SkuVaultApiWrapper.Services
 {
-	internal class TokenClient
+	internal class TokenService
 	{
 		/// <summary>
 		/// Default Constructor
 		/// </summary>
-		public TokenClient()
+		public TokenService()
 		{
 		}
 
@@ -23,7 +21,7 @@ namespace SkuVaultApiWrapper
 		/// </summary>
 		/// <returns>A Task of GetTokensResponse</returns>
 		/// <exception cref="UnableToGetTokensException">Thrown if the response does not contain tokens</exception>
-		internal async Task<GetTokensResponse> GetTokensOrThrow(string userEmail, string userPassword, HttpClient httpClient)
+		internal async Task<GetTokensResponse> GetTokensFromUserCredentials(string userEmail, string userPassword, HttpClient httpClient)
 		{
 			var getTokensRequest = new GetTokensRequest
 			{
@@ -40,7 +38,7 @@ namespace SkuVaultApiWrapper
 
 			if (TokensResponseWasValid(decodedResponseContent))
 				return decodedResponseContent;
-			
+
 			throw new UnableToGetTokensException("Unable to get Tokens from User Credentials.");
 		}
 

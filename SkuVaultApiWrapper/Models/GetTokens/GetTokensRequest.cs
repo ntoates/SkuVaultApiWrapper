@@ -1,8 +1,11 @@
-﻿namespace SkuVaultApiWrapper.Models.SkuVaultModels
+﻿using SkuVaultApiWrapper.Models.Shared;
+
+namespace SkuVaultApiWrapper.Models.SkuVaultModels
 {
 	public class GetTokensRequest : BaseRequestModel
 	{
 		public string Email { get; set; }
 		public string Password { get; set; }
+		public override string Endpoint() => SkuVaultEndpoints.getTokens;
 	}
 }

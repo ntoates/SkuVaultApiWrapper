@@ -32,5 +32,18 @@ namespace SkuVaultApiWrapper.RequestMethods
 
 			return decodedResponseContent;
 		}
+
+		internal static async Task<string> PostAsync(SkuVaultApiClient apiClient, BaseRequestModel request, string endpoint)
+		{
+			// Add tokens to request body. Required for all SkuVault API endpoints.
+			request.TenantToken = apiClient._apiClientConfig.TenantToken;
+			request.UserToken = apiClient._apiClientConfig.UserToken;
+			string serializedRequestBody = JsonConvert.SerializeObject(request);
+
+			var response = await apiClient._httpClient.PostAsync(endpoint, new StringContent(serializedRequestBody, Encoding.UTF8, "application/json"));
+
+			// Setup and Return Response Content
+			return await response.Content.ReadAsStringAsync();
+		}
 	}
 }

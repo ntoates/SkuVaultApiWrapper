@@ -15,7 +15,7 @@ namespace SkuVaultApiWrapper.Extensions
 {
 	public static class SkuVaultApiClientExtensions
 	{
-		public static async Task<GetWarehousesResponse> GetWarehouses(this SkuVaultApiClient apiClient, GetWarehouseRequest request)
+		public static async Task<GetWarehousesResponse> GetWarehouses(this SkuVaultApiClient apiClient, GetWarehousesRequest request)
 		{
 			return await PostRequest.PostAsync<GetWarehousesResponse>(apiClient, request, SkuVaultEndpoints.getWarehouses);
 		}

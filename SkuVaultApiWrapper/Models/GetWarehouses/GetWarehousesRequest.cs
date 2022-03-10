@@ -1,6 +1,9 @@
-﻿namespace SkuVaultApiWrapper.Models.SkuVaultModels
+﻿using SkuVaultApiWrapper.Models.Shared;
+
+namespace SkuVaultApiWrapper.Models.SkuVaultModels
 {
-	public class GetWarehouseRequest : BasePagedRequestModel
+	public class GetWarehousesRequest : BasePagedRequestModel
 	{
+		public override string Endpoint() => SkuVaultEndpoints.getWarehouses;
 	}
 }
