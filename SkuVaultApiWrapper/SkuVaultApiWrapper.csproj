@@ -1,8 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <UserSecretsId>77469335-58ff-44a7-8b1e-58fa2a2da0ee</UserSecretsId>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://github.com/ntoates/SkuVaultApiWrapper</PackageProjectUrl>
+    <Authors>https://github.com/ntoates</Authors>
+    <Company />
+    <Version>1.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
