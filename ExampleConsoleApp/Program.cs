@@ -12,7 +12,7 @@ namespace ExampleConsoleApp
 		{
 			// Default ConfigurationBuilder pulling Configruation from user secrets.
 			var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory())
-				.AddUserSecrets<UserDefineConfiguration>()
+				.AddUserSecrets<UserDefinedConfiguration>()
 				.Build();
 
 			// Add Configuration and Services for this library

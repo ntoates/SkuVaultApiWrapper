@@ -16,7 +16,7 @@ namespace SkuVaultApiWrapper.Extensions
 		/// Adds the Configuration, HttpClientFactory, and Service for the SkuVault API Client.
 		/// </summary>
 		/// <param name="services">The service collection we are extending.</param>
-		/// <param name="skuVaultApiClientConfigurationSection">The Configuration section</param>
+		/// <param name="skuVaultApiClientConfigurationSection">The Configuration section containing SkuVaultApiClientConfig</param>
 		public static void AddSkuVaultApiWrapper(this IServiceCollection services, IConfiguration skuVaultApiClientConfigurationSection)
 		{
 			services.Configure<SkuVaultApiClientConfig>(skuVaultApiClientConfigurationSection);

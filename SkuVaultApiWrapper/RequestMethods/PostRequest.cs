@@ -8,16 +8,24 @@ namespace SkuVaultApiWrapper.RequestMethods
 {
 	internal class PostRequest
 	{
+		/// <summary>
+		/// Returns a parsed 
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="apiClient"></param>
+		/// <param name="request"></param>
+		/// <param name="endpoint"></param>
+		/// <returns></returns>
 		internal static async Task<T> PostAsync<T>(SkuVaultApiClient apiClient, BaseRequestModel request, string endpoint) where T : BaseResponseModel
 		{
 			// Add tokens to request body. Required for all SkuVault API endpoints.
-			request.TenantToken = apiClient._apiClientConfig.TenantToken;
-			request.UserToken = apiClient._apiClientConfig.UserToken;
+			request.SetTenantToken(apiClient.ApiClientConfig.TenantToken);
+			request.SetUserToken(apiClient.ApiClientConfig.UserToken);
+
 			string serializedRequestBody = JsonConvert.SerializeObject(request);
 
-			var response = await apiClient._httpClient.PostAsync(endpoint, new StringContent(serializedRequestBody, Encoding.UTF8, "application/json"));
+			var response = await apiClient.HttpClient.PostAsync(endpoint, new StringContent(serializedRequestBody, Encoding.UTF8, "application/json"));
 
-			// Setup and Return Response Content
 			var responseContent = await response.Content.ReadAsStringAsync();
 			var decodedResponseContent = JsonConvert.DeserializeObject<T>(responseContent);
 
@@ -27,17 +35,17 @@ namespace SkuVaultApiWrapper.RequestMethods
 			return decodedResponseContent;
 		}
 
-		internal static async Task<string> PostAsync(SkuVaultApiClient apiClient, BaseRequestModel request, string endpoint)
+		/// <summary>
+		/// Returns an HttpResponse Message for response parsing
+		/// </summary>
+		internal static async Task<HttpResponseMessage> PostAsync(SkuVaultApiClient apiClient, BaseRequestModel request, string endpoint)
 		{
-			// Add tokens to request body. Required for all SkuVault API endpoints.
-			request.TenantToken = apiClient._apiClientConfig.TenantToken;
-			request.UserToken = apiClient._apiClientConfig.UserToken;
+			request.SetTenantToken(apiClient.ApiClientConfig.TenantToken);
+			request.SetUserToken(apiClient.ApiClientConfig.UserToken);
+
 			string serializedRequestBody = JsonConvert.SerializeObject(request);
 
-			var response = await apiClient._httpClient.PostAsync(endpoint, new StringContent(serializedRequestBody, Encoding.UTF8, "application/json"));
-
-			// Setup and Return Response Content
-			return await response.Content.ReadAsStringAsync();
+			return await apiClient.HttpClient.PostAsync(endpoint, new StringContent(serializedRequestBody, Encoding.UTF8, "application/json"));
 		}
 	}
 }
