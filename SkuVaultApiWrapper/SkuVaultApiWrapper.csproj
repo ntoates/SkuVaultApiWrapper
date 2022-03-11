@@ -8,6 +8,8 @@
     <Authors>https://github.com/ntoates</Authors>
     <Company />
     <Version>1.0.0</Version>
+    <RepositoryUrl>https://github.com/ntoates/SkuVaultApiWrapper</RepositoryUrl>
+    <Description>Simple API Wrapper for SkuVault</Description>
   </PropertyGroup>
 
   <ItemGroup>
