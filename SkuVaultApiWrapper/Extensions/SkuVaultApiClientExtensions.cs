@@ -5,6 +5,7 @@ using SkuVaultApiWrapper.Models.GetExternalWarehouses;
 using SkuVaultApiWrapper.Models.GetIntegrations;
 using SkuVaultApiWrapper.Models.GetKits;
 using SkuVaultApiWrapper.Models.GetLocations;
+using SkuVaultApiWrapper.Models.GetOnlineSaleStatus;
 using SkuVaultApiWrapper.Models.GetProduct;
 using SkuVaultApiWrapper.Models.GetProducts;
 using SkuVaultApiWrapper.Models.GetPurchaseOrders;
@@ -76,6 +77,11 @@ namespace SkuVaultApiWrapper.Extensions
 		public static async Task<SyncOnlineSaleResponse> SyncOnlineSale(this SkuVaultApiClient apiClient, SyncOnlineSaleRequest request)
 		{
 			return await PostRequest.PostAsync<SyncOnlineSaleResponse>(apiClient, request);
+		}
+
+		public static async Task<GetOnlineSaleStatusResponse> GetOnlineSaleStatus(this SkuVaultApiClient apiClient, GetOnlineSaleStatusRequest request)
+		{
+			return await PostRequest.PostAsync<GetOnlineSaleStatusResponse>(apiClient, request);
 		}
 	}
 }
