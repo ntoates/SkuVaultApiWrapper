@@ -1,8 +1,7 @@
 ﻿namespace SkuVaultApiWrapper.Models.SharedModels
 {
-	public class Warehouse
+	public class WarehouseCode
 	{
-		public string Id { get; set; }
 		public string Code { get; set; }
 	}
 }

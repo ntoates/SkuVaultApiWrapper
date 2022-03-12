@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using SkuVaultApiWrapper.Models.SharedModels;
+using System.Collections.Generic;
 
-namespace SkuVaultApiWrapper.Models.SkuVaultModels
+namespace SkuVaultApiWrapper.Models.GetExternalWarehouses
 {
 	public class GetExternalWarehousesResponse : BaseResponseModel
 	{

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SkuVaultApiWrapper.Models.SharedModels
+﻿namespace SkuVaultApiWrapper.Models.SharedModels
 {
 	public class SupplierInfo
 	{

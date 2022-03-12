@@ -1,6 +1,6 @@
 ﻿using SkuVaultApiWrapper.Models.Shared;
 
-namespace SkuVaultApiWrapper.Models.SkuVaultModels
+namespace SkuVaultApiWrapper.Models.GetWarehouses
 {
 	public class GetWarehousesRequest : BasePagedRequestModel
 	{

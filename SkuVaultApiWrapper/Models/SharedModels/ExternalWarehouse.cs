@@ -1,4 +1,4 @@
-﻿namespace SkuVaultApiWrapper.Models.SkuVaultModels
+﻿namespace SkuVaultApiWrapper.Models.SharedModels
 {
 	public class ExternalWarehouse
 	{

@@ -1,6 +1,6 @@
 ﻿using SkuVaultApiWrapper.Models.Shared;
 
-namespace SkuVaultApiWrapper.Models.SkuVaultModels
+namespace SkuVaultApiWrapper.Models.GetClassifications
 {
 	public class GetClassificationsRequest : BasePagedRequestModel
 	{
