@@ -30,6 +30,19 @@ namespace SkuVaultApiWrapper
 			return;
 		}
 
+		public SkuVaultApiClient(HttpClient httpClient, SkuVaultApiClientConfig config)
+		{
+			var validator = new SkuVaultApiClientValidator();
+			validator.ValidateOptions(httpClient, config);
+
+			HttpClient = httpClient;
+			HttpClient.BaseAddress = new Uri("https://app.skuvault.com/");
+			HttpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+			ApiClientConfig = config;
+			return;
+		}
+
 		/// <summary>
 		/// Optional method of sending a specific request/response object. 
 		/// This allows the use of this library with custom request and response objects.
