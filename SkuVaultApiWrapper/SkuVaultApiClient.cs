@@ -37,17 +37,7 @@ namespace SkuVaultApiWrapper
 		/// <typeparam name="D">A Response model inheriting from the BaseResponseModel</typeparam>
 		public async Task<D> Post<T, D>(T request) where T : BaseRequestModel where D : BaseResponseModel
 		{
-			return await PostRequest.PostAsync<D>(this, request, request.Endpoint());
-		}
-
-		/// <summary>
-		/// Optional method of sending a specific request object while receiving a json string response back.
-		/// This is useful in the case that the response objects have changed.
-		/// </summary>
-		/// <typeparam name="T">A Request model inheriting from the BaseRequestModel</typeparam>
-		public async Task<HttpResponseMessage> Post<T>(T request) where T : BaseRequestModel
-		{
-			return await PostRequest.PostAsync(this, request, request.Endpoint());
+			return await PostRequest.PostAsync<D>(this, request);
 		}
 	}
 }

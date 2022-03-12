@@ -16,7 +16,7 @@ namespace SkuVaultApiWrapper.Models.SyncOnlineSale
 		public List<FulfilledItem> FulfilledItems { get; set; }
 		public List<ItemSku> ItemSkus { get; set; }
 		public string Notes { get; set; }
-		public int OrderTotal { get; set; }
+		public double OrderTotal { get; set; }
 		public string PaymentStatus { get; set; }
 		public string SaleState { get; set; }
 		public AutoRemoveInfo AutoRemoveInfo { get; set; }

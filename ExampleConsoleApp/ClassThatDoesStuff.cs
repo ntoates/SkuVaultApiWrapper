@@ -1,6 +1,8 @@
 ﻿using SkuVaultApiWrapper;
 using SkuVaultApiWrapper.Extensions;
 using SkuVaultApiWrapper.Models.GetProduct;
+using SkuVaultApiWrapper.Models.SharedModels;
+using SkuVaultApiWrapper.Models.SyncOnlineSale;
 
 namespace ExampleConsoleApp
 {
@@ -15,8 +17,16 @@ namespace ExampleConsoleApp
 
 		public void Run()
 		{
-			var productResponse = _skuVaultApiClient.GetProduct(new GetProductRequest { ProductSKU = "testsku1001" }).GetAwaiter().GetResult();
-			Console.WriteLine("Product Description and SKU from your product from /getProduct: " + productResponse.Product.Description + "-" + productResponse.Product.Sku);
+			var saleRequest = new SyncOnlineSaleRequest { 
+				OrderId = "12345",
+				OrderTotal = 2.5,
+				ItemSkus = new List<ItemSku> {
+					new ItemSku { Sku = "testsku1001", Quantity = 5, UnitPrice = 2.5 }
+					
+				} 
+			};
+			var saleRespone = _skuVaultApiClient.SyncOnlineSale(saleRequest).GetAwaiter().GetResult();
+			Console.WriteLine($"Order Id: {saleRespone.OrderId} --- Status: {saleRespone.Status} --- ");
 		}
 	}
 }
