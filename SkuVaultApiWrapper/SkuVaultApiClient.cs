@@ -31,7 +31,8 @@ namespace SkuVaultApiWrapper
 		}
 
 		/// <summary>
-		/// Optional method of sending a specific request/response object.
+		/// Optional method of sending a specific request/response object. 
+		/// This allows the use of this library with custom request and response objects.
 		/// </summary>
 		/// <typeparam name="T">A Request model inheriting from the BaseRequestModel</typeparam>
 		/// <typeparam name="D">A Response model inheriting from the BaseResponseModel</typeparam>
