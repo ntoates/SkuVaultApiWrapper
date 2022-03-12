@@ -23,7 +23,7 @@ namespace SkuVaultApiWrapper.Models
 			string FullErrorMessage = "";
 			for (int i = 0; i < ErrorCount; i++)
 			{
-				var stringToInsert = i < ErrorCount ? ListOfErrors[i] + "; " : ListOfErrors[i];
+				var stringToInsert = i < ErrorCount ? ListOfErrors[i] + " " : ListOfErrors[i];
 				FullErrorMessage.Insert(FullErrorMessage.Length, stringToInsert);
 			}
 			return FullErrorMessage;

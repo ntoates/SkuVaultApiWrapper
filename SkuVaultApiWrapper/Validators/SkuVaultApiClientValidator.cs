@@ -17,7 +17,7 @@ namespace SkuVaultApiWrapper.Validators
 				errors.AddError("HttpClient can not be null.");
 
 			if(string.IsNullOrWhiteSpace(config.UserToken))
-				errors.AddError("UserToken can not be null, empty, or whitespace.");
+				errors.AddError("User Token can not be null, empty, or whitespace.");
 
 			if (string.IsNullOrWhiteSpace(config.TenantToken))
 				errors.AddError("Tenant Token can not be null, empty, or whitespace.");

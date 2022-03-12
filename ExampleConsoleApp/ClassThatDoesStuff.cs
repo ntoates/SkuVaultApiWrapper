@@ -1,8 +1,6 @@
 ﻿using SkuVaultApiWrapper;
 using SkuVaultApiWrapper.Extensions;
 using SkuVaultApiWrapper.Models.GetOnlineSaleStatus;
-using SkuVaultApiWrapper.Models.GetProduct;
-using SkuVaultApiWrapper.Models.SharedModels;
 using SkuVaultApiWrapper.Models.SyncOnlineSale;
 
 namespace ExampleConsoleApp
@@ -32,8 +30,6 @@ namespace ExampleConsoleApp
 			var getOnlineSaleRequest = new GetOnlineSaleStatusRequest { OrderIds = new List<string> { "12345" } };
 			var saleRespone = _skuVaultApiClient.GetOnlineSaleStatus(getOnlineSaleRequest).GetAwaiter().GetResult();
 			Console.WriteLine($"Order Id: {saleRespone.Sales[0].Id} --- Status: {saleRespone.Sales[0].Status}");
-
-
 		}
 	}
 }
