@@ -1,4 +1,5 @@
-﻿using SkuVaultApiWrapper.Models.GetAvailableQuantities;
+﻿using SkuVaultApiWrapper.Models.AddItem;
+using SkuVaultApiWrapper.Models.GetAvailableQuantities;
 using SkuVaultApiWrapper.Models.GetBrands;
 using SkuVaultApiWrapper.Models.GetClassifications;
 using SkuVaultApiWrapper.Models.GetExternalWarehouses;
@@ -82,6 +83,11 @@ namespace SkuVaultApiWrapper.Extensions
 		public static async Task<GetOnlineSaleStatusResponse> GetOnlineSaleStatus(this SkuVaultApiClient apiClient, GetOnlineSaleStatusRequest request)
 		{
 			return await PostRequest.PostAsync<GetOnlineSaleStatusResponse>(apiClient, request);
+		}
+
+		public static async Task<AddItemResponse> AddItem(this SkuVaultApiClient apiClient, AddItemRequest request)
+		{
+			return await PostRequest.PostAsync<AddItemResponse>(apiClient, request);
 		}
 	}
 }
