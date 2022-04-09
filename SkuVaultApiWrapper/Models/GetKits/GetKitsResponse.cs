@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SkuVaultApiWrapper.Models.GetKits
 {
-	public class GetKitsResponse:  BaseResponseWithSvDetailsModel
+	public class GetKitsResponse:  BaseResponseWithSvDetailsModel<string>
 	{
 		public List<Kit> Kits { get; set; }
 	}

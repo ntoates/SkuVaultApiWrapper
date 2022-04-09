@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SkuVaultApiWrapper.Extensions;
+using SkuVaultApiWrapper.DependencyInjection;
 
 namespace ExampleConsoleApp
 {

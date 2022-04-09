@@ -1,4 +1,6 @@
-﻿using SkuVaultApiWrapper.Models.AddItem;
+﻿using SkuVaultApiWrapper.Models;
+using SkuVaultApiWrapper.Models.AddItem;
+using SkuVaultApiWrapper.Models.CreateBrands;
 using SkuVaultApiWrapper.Models.GetAvailableQuantities;
 using SkuVaultApiWrapper.Models.GetBrands;
 using SkuVaultApiWrapper.Models.GetClassifications;
@@ -11,7 +13,8 @@ using SkuVaultApiWrapper.Models.GetProduct;
 using SkuVaultApiWrapper.Models.GetProducts;
 using SkuVaultApiWrapper.Models.GetPurchaseOrders;
 using SkuVaultApiWrapper.Models.GetWarehouses;
-using SkuVaultApiWrapper.Models.Shared;
+using SkuVaultApiWrapper.Models.PickItem;
+using SkuVaultApiWrapper.Models.RemoveItem;
 using SkuVaultApiWrapper.Models.SyncOnlineSale;
 using SkuVaultApiWrapper.RequestMethods;
 using System.Threading.Tasks;
@@ -88,6 +91,21 @@ namespace SkuVaultApiWrapper.Extensions
 		public static async Task<AddItemResponse> AddItem(this SkuVaultApiClient apiClient, AddItemRequest request)
 		{
 			return await PostRequest.PostAsync<AddItemResponse>(apiClient, request);
+		}
+
+		public static async Task<RemoveItemResponse> RemoveItem(this SkuVaultApiClient apiClient, RemoveItemRequest request)
+		{
+			return await PostRequest.PostAsync<RemoveItemResponse>(apiClient, request);
+		}
+
+		public static async Task<PickItemResponse> PickItem(this SkuVaultApiClient apiClient, PickItemRequest request)
+		{
+			return await PostRequest.PostAsync<PickItemResponse>(apiClient, request);
+		}
+
+		public static async Task<CreateBrandsResponse> CreateBrands(this SkuVaultApiClient apiClient, CreateBrandsRequest request)
+		{
+			return await PostRequest.PostAsync<CreateBrandsResponse>(apiClient, request);
 		}
 	}
 }

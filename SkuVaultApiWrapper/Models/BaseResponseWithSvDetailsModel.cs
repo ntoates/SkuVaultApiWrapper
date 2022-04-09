@@ -2,9 +2,9 @@
 
 namespace SkuVaultApiWrapper.Models
 {
-	public class BaseResponseWithSvDetailsModel : BaseResponseModel
+	public class BaseResponseWithSvDetailsModel<ListObject> : BaseResponseModel
 	{
 		public string Status { get; set; } = "Unknown";
-		public List<string> Errors { get; set; }
+		public List<ListObject> Errors { get; set; }
 	}
 }

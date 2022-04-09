@@ -7,6 +7,6 @@ namespace SkuVaultApiWrapper.Models.GetBrands
 {
 	public class GetBrandsResponse : BaseResponseModel
 	{
-		public List<Brand> Brands { get; set; }
+		public List<BrandWithEnabledStatus> Brands { get; set; }
 	}
 }

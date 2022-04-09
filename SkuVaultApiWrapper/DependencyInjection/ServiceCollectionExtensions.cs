@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using SkuVaultApiWrapper.Models;
 using System;
 
-namespace SkuVaultApiWrapper.Extensions
+namespace SkuVaultApiWrapper.DependencyInjection
 {
 	/// <summary>
 	/// Good articles for this pattern can be found here: 
@@ -13,7 +13,7 @@ namespace SkuVaultApiWrapper.Extensions
 	public static class ServiceCollectionExtensions
 	{
 		/// <summary>
-		/// Adds the Configuration, HttpClientFactory, and Service for the SkuVault API Client.
+		/// Adds the Configuration, HttpClientFactory, and Services for the SkuVault API Client.
 		/// </summary>
 		/// <param name="services">The service collection we are extending.</param>
 		/// <param name="skuVaultApiClientConfigurationSection">The Configuration section containing SkuVaultApiClientConfig</param>
