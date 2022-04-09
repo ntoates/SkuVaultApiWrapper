@@ -387,3 +387,4 @@ FodyWeavers.xsd
 .idea/
 *.sln.iml
 *.bak
+/SkuVaultApiWrapper/SkuVaultApiWrapper - Backup.csproj
