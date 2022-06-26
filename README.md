@@ -9,7 +9,9 @@ Intended to be a minimalistic wrapper for SkuVaults API.
 * [Not Included](#not-included)
 
 ## Basic Example Usage
-Be sure to dispose of any manual HttpClient usage like this. View Microsoft's documentation on this [here](https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=net-6.0). This example is for /getOnlineSaleStatus:
+View Microsoft's documentation on HttpClient [here](https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=net-6.0). All SkuVault API documentation can be found [here](https://dev.skuvault.com/reference/).
+
+Example usage:
 ```
 public void Run()
 {
@@ -36,7 +38,7 @@ public RandomClass(SkuVaultApiClient skuvaultApiClient)
 }
 ```
 
-Then use the client to interact with the API. This example is for /getOnlineSaleStatus:
+Then use the client to interact with the API:
 ```
 public void Run()
 {
