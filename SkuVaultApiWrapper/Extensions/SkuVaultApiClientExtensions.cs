@@ -1,5 +1,6 @@
 ﻿using SkuVaultApiWrapper.Models;
 using SkuVaultApiWrapper.Models.AddItem;
+using SkuVaultApiWrapper.Models.AddItemBulk;
 using SkuVaultApiWrapper.Models.CreateBrands;
 using SkuVaultApiWrapper.Models.GetAvailableQuantities;
 using SkuVaultApiWrapper.Models.GetBrands;
@@ -91,6 +92,11 @@ namespace SkuVaultApiWrapper.Extensions
 		public static async Task<AddItemResponse> AddItem(this SkuVaultApiClient apiClient, AddItemRequest request)
 		{
 			return await PostRequest.PostAsync<AddItemResponse>(apiClient, request);
+		}
+
+		public static async Task<AddItemBulkResponse> AddItemBulk(this SkuVaultApiClient apiClient, AddItemBulkRequest request)
+		{
+			return await PostRequest.PostAsync<AddItemBulkResponse>(apiClient, request);
 		}
 
 		public static async Task<RemoveItemResponse> RemoveItem(this SkuVaultApiClient apiClient, RemoveItemRequest request)
